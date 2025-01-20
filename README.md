@@ -576,8 +576,8 @@ must be applied always no matter which group is used.
 ## Validation option validateIf
 
 If you want an individual validaton decorator to apply conditionally, you can you can use the option `validateIf` available to all validators.
-This allows more granular control than the `@ValidateIf` decorator which toggles all validators on the property, but keep in mind that 
-with great power comes great responsibility: Take care not to create unnecessarily complex validation logic. 
+This allows more granular control than the `@ValidateIf` decorator which toggles all validators on the property, but keep in mind that
+with great power comes great responsibility: Take care not to create unnecessarily complex validation logic.
 
 ```typescript
 class MyClass {
