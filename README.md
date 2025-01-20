@@ -573,9 +573,11 @@ validate(user, {
 There is also a special flag `always: true` in validation options that you can use. This flag says that this validation
 must be applied always no matter which group is used.
 
-## Validation validateIf
+## Validation option validateIf
 
-If you want to validate that condition by object, you can use validation validateIf.
+If you want an individual validaton decorator to apply conditionally, you can you can use the option `validateIf` available to all validators.
+This allows more granular control than the `@ValidateIf` decorator which toggles all validators on the property, but keep in mind that 
+with great power comes great responsibility: Take care not to create unnecessarily complex validation logic. 
 
 ```typescript
 class MyClass {
