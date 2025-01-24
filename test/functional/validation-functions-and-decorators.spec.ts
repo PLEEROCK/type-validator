@@ -485,7 +485,7 @@ describe('IsNotBlank', () => {
     const message = 'someProperty should not be blank';
     return checkReturnedError(new MyClass(), invalidValues, validationType, message);
   });
-})
+});
 
 describe('IsIn', () => {
   const constraint = ['foo', 'bar'] as const;
