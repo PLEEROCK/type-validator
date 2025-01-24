@@ -456,8 +456,8 @@ describe('IsNotEmpty', () => {
 });
 
 describe('IsNotBlank', () => {
-  const validValues = ['a', 'abc', 0, 1];
-  const invalidValues = ['', undefined, null, '  ', new Object()];
+  const validValues = ['a', 'abc', 0, 1, new Object(), [], new Date(), true, false];
+  const invalidValues = ['', undefined, null, '  '];
 
   class MyClass {
     @IsNotBlank()

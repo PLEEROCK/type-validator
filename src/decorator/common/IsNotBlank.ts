@@ -6,15 +6,17 @@ export const IS_NOT_BLANK = 'isNotBlank';
 /**
  * @param value The value to be checked
  * @returns true if the value is not blank, false otherwise
+ * @description
+ * The value is considered blank if it is null, undefined or empty string
+ * @description
+ * Non-string values is considered not blank
  */
 export function isNotBlank(value: unknown): boolean {
-  if (value == null) return false; // Verify if the value is null or undefined
+  if (value == null) return false;
 
   if (typeof value === 'string') return value.trim().length > 0;
 
-  if (typeof value === 'number') return !isNaN(value);
-
-  return false; // Any other type is considered invalid
+  return true;
 }
 
 /**
@@ -24,7 +26,9 @@ export function isNotBlank(value: unknown): boolean {
  * @description
  * The decorator checks if the value is not blank
  * @description
- * The value is considered blank if it is null, undefined, empty string or NaN
+ * The value is considered blank if it is null, undefined or empty string
+ * @description
+ * Non-string values is considered not blank
  */
 export function IsNotBlank(validationOptions?: ValidationOptions): PropertyDecorator {
   return ValidateBy(
