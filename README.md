@@ -62,6 +62,8 @@ import {
   IsInt,
   Length,
   IsEmail,
+  IsNotBlank,
+  IsString,
   IsFQDN,
   IsDate,
   Min,
@@ -82,6 +84,10 @@ export class Post {
 
   @IsEmail()
   email: string;
+
+  @IsString()
+  @IsNotBlank()
+  username: string;
 
   @IsFQDN()
   site: string;
