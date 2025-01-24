@@ -124,6 +124,8 @@ import {
   notEquals,
   isEmpty,
   isNotEmpty,
+  IsNotBlank,
+  isNotBlank,
   isIn,
   isNotIn,
   isDateString,
@@ -422,7 +424,7 @@ describe('IsEmpty', () => {
 });
 
 describe('IsNotEmpty', () => {
-  const validValues = ['a', 'abc'];
+  const validValues = ['a', 'abc', '  '];
   const invalidValues = ['', undefined, null];
 
   class MyClass {
@@ -452,6 +454,38 @@ describe('IsNotEmpty', () => {
     return checkReturnedError(new MyClass(), invalidValues, validationType, message);
   });
 });
+
+describe('IsNotBlank', () => {
+  const validValues = ['a', 'abc'];
+  const invalidValues = ['', undefined, null, '  '];
+
+  class MyClass {
+    @IsNotBlank()
+    someProperty: string;
+  }
+
+  it('should not fail if validator.validate said that its valid', () => {
+    return checkValidValues(new MyClass(), validValues);
+  });
+
+  it('should fail if validator.validate said that its invalid', () => {
+    return checkInvalidValues(new MyClass(), invalidValues);
+  });
+
+  it('should not fail if method in validator said that its valid', () => {
+    validValues.forEach(value => expect(isNotBlank(value)).toBeTruthy());
+  });
+
+  it('should fail if method in validator said that its invalid', () => {
+    invalidValues.forEach(value => expect(isNotBlank(value)).toBeFalsy());
+  });
+
+  it('should return error object with proper data', () => {
+    const validationType = 'isNotBlank';
+    const message = 'someProperty should not be blank';
+    return checkReturnedError(new MyClass(), invalidValues, validationType, message);
+  });
+})
 
 describe('IsIn', () => {
   const constraint = ['foo', 'bar'] as const;

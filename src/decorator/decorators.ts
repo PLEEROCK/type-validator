@@ -21,6 +21,7 @@ export * from './common/Equals';
 export * from './common/NotEquals';
 export * from './common/IsEmpty';
 export * from './common/IsNotEmpty';
+export * from './common/IsNotBlank';
 export * from './common/IsIn';
 export * from './common/IsNotIn';
 
